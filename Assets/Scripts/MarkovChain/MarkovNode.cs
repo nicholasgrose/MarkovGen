@@ -30,9 +30,17 @@ namespace Assets.Scripts.MarkovChain
 
         public MarkovNode<TNodeType> GetNextNode()
         {
+            double randomNumber = RandomNumberSource.GetRandomNumber();
+            double connectionSum = 0;
+
             foreach (var connection in _connections)
             {
+                connectionSum += connection.Weight;
 
+                if (connectionSum >= randomNumber)
+                {
+                    return connection.Target;
+                }
             }
 
             return this;
