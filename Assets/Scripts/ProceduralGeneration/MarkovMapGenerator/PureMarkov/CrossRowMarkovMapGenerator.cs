@@ -5,7 +5,7 @@ using System.Text;
 using Assets.Scripts.MarkovChain;
 using TMPro.EditorUtilities;
 
-namespace Assets.Scripts.ProceduralGeneration
+namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
     public class CrossRowMarkovMapGenerator : MapGenerator
     {

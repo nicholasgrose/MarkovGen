@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Scripts.MarkovChain;
 
-namespace Assets.Scripts.ProceduralGeneration
+namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
     public class IndependentRowMarkovMapGenerator : MapGenerator
     {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.ProceduralGeneration
 {
-    public enum MarkovGenAlgorithm
+    public enum PureMarkovGenAlgorithm
     {
         CROSS_ROW,
         INDEPENDENT_ROW,

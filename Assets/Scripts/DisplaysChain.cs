@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.ProceduralGeneration;
+using Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov;
 using UnityEngine;
 
 
@@ -19,7 +20,7 @@ namespace  Assets.Scripts
         [Tooltip("The chance that a water pixel will turn into a land pixel in the chain")]
         public double WaterToLandWeight;
         [Tooltip("Selects the specific algorithm being used to generate the map")]
-        public MarkovGenAlgorithm GenerationAlgorithm;
+        public PureMarkovGenAlgorithm GenerationAlgorithm;
         [Tooltip("The object the generated texture is displayed on")]
         public GameObject DisplaySurface;
 
@@ -37,11 +38,11 @@ namespace  Assets.Scripts
         {
             switch (GenerationAlgorithm)
             {
-                case MarkovGenAlgorithm.CROSS_ROW:
+                case PureMarkovGenAlgorithm.CROSS_ROW:
                     return new CrossRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case MarkovGenAlgorithm.INDEPENDENT_ROW:
+                case PureMarkovGenAlgorithm.INDEPENDENT_ROW:
                     return new IndependentRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case MarkovGenAlgorithm.LEFT_CORNER:
+                case PureMarkovGenAlgorithm.LEFT_CORNER:
                     return new LeftCornerMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
                 default:
                     return null;
@@ -88,7 +89,5 @@ namespace  Assets.Scripts
                 DisplayMap(map);
             }
         }
-
-
     }
 }
