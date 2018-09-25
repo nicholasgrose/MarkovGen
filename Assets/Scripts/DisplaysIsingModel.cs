@@ -1,28 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.ProceduralGeneration;
+using Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarkov;
 using Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov;
 using UnityEngine;
 
-
 namespace Assets.Scripts
 {
-    public class DisplaysChain : MonoBehaviour
+    public class DisplaysIsingModel : MonoBehaviour
     {
         [Tooltip("The resolution of the texture on the x-axis")]
         public int TextureWidth;
         [Tooltip("The resolution of the texture on the y-axis")]
         public int TextureHeight;
-        [Range(0, 1)]
-        [Tooltip("The chance that a land pixel will turn into a water pixel in the chain")]
-        public double LandToWaterWeight;
-        [Range(0, 1)]
-        [Tooltip("The chance that a water pixel will turn into a land pixel in the chain")]
-        public double WaterToLandWeight;
         [Tooltip("Selects the specific algorithm being used to generate the map")]
-        public PureMarkovGenAlgorithm GenerationAlgorithm;
+        public IsingModelMarkovGenAlgorithm GenerationAlgorithm;
         [Tooltip("The object the generated texture is displayed on")]
         public GameObject DisplaySurface;
+
+        public int Iterations;
+        public int Temperature;
 
         private MapGenerator _mapGenerator;
 
@@ -38,12 +35,8 @@ namespace Assets.Scripts
         {
             switch (GenerationAlgorithm)
             {
-                case PureMarkovGenAlgorithm.CROSS_ROW:
-                    return new CrossRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case PureMarkovGenAlgorithm.INDEPENDENT_ROW:
-                    return new IndependentRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case PureMarkovGenAlgorithm.LEFT_CORNER:
-                    return new LeftCornerMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
+                case IsingModelMarkovGenAlgorithm.STANDARD_ISING_MODEL:
+                    return new IsingModelMarkovMapGenerator(Iterations, Temperature);
                 default:
                     return null;
             }
@@ -90,4 +83,5 @@ namespace Assets.Scripts
             }
         }
     }
+}
 }
