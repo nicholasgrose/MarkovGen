@@ -22,7 +22,5 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
 
             throw new NotImplementedException();
         }
-
-        public 
     }
 }
