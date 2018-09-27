@@ -7,6 +7,6 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.MutationMarkov
 {
     public enum MutationMarkovGenAlgorithm
     {
-        STANDARD_MUTATION
+        StandardMutation
     }
 }

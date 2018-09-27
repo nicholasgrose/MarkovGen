@@ -24,7 +24,7 @@ namespace Assets.Scripts
         [Tooltip("The object the generated texture is displayed on")]
         public GameObject DisplaySurface;
 
-        private MapGenerator _mapGenerator;
+        private IMapGenerator _mapGenerator;
 
         // Use this for initialization
         private void Start()
@@ -34,15 +34,15 @@ namespace Assets.Scripts
             DisplayMap(map);
         }
 
-        private MapGenerator GetMarkovMapGenerator()
+        private IMapGenerator GetMarkovMapGenerator()
         {
             switch (GenerationAlgorithm)
             {
-                case PureMarkovGenAlgorithm.CROSS_ROW:
+                case PureMarkovGenAlgorithm.CrossRow:
                     return new CrossRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case PureMarkovGenAlgorithm.INDEPENDENT_ROW:
+                case PureMarkovGenAlgorithm.IndependentRow:
                     return new IndependentRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case PureMarkovGenAlgorithm.LEFT_CORNER:
+                case PureMarkovGenAlgorithm.LeftCorner:
                     return new LeftCornerMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
                 default:
                     return null;

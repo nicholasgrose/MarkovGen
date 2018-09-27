@@ -27,7 +27,7 @@ public class DisplayMutatedChain : MonoBehaviour
     [Tooltip("The object the generated texture is displayed on")]
     public GameObject DisplaySurface;
 
-    private MapGenerator _mapGenerator;
+    private IMapGenerator _mapGenerator;
 
     // Use this for initialization
     private void Start()
@@ -37,11 +37,11 @@ public class DisplayMutatedChain : MonoBehaviour
         DisplayMap(map);
     }
 
-    private MapGenerator GetMarkovMapGenerator()
+    private IMapGenerator GetMarkovMapGenerator()
     {
         switch (GenerationAlgorithm)
         {
-            case MutationMarkovGenAlgorithm.STANDARD_MUTATION:
+            case MutationMarkovGenAlgorithm.StandardMutation:
                 return new MutationMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight, MinimumMutations, MaximumMutations);
             default:
                 return null;

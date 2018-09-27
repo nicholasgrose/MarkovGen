@@ -6,7 +6,7 @@ using Assets.Scripts.MarkovChain;
 
 namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
-    public class IndependentRowMarkovMapGenerator : MapGenerator
+    public class IndependentRowMarkovMapGenerator : IMapGenerator
     {
         private readonly double _landWaterConnectionWeight;
         private readonly double _waterLandConnectionWeight;

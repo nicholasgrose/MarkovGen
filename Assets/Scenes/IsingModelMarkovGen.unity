@@ -386,6 +386,6 @@ MonoBehaviour:
   TextureWidth: 512
   TextureHeight: 512
   GenerationAlgorithm: 0
-  DisplaySurface: {fileID: 0}
+  DisplaySurface: {fileID: 714883513}
   Iterations: 1024
   Temperature: 1

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Assets.Scripts.ProceduralGeneration;
 using Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarkov;
-using Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -21,7 +20,7 @@ namespace Assets.Scripts
         public int Iterations;
         public int Temperature;
 
-        private MapGenerator _mapGenerator;
+        private IMapGenerator _mapGenerator;
 
         // Use this for initialization
         private void Start()
@@ -31,11 +30,11 @@ namespace Assets.Scripts
             DisplayMap(map);
         }
 
-        private MapGenerator GetMarkovMapGenerator()
+        private IMapGenerator GetMarkovMapGenerator()
         {
             switch (GenerationAlgorithm)
             {
-                case IsingModelMarkovGenAlgorithm.STANDARD_ISING_MODEL:
+                case IsingModelMarkovGenAlgorithm.StandardIsingModel:
                     return new IsingModelMarkovMapGenerator(Iterations, Temperature);
                 default:
                     return null;

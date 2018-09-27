@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.MutationMarkov
 {
-    public class MutationMarkovMapGenerator : MapGenerator
+    public class MutationMarkovMapGenerator : IMapGenerator
     {
         private readonly double _landWaterConnectionWeight;
         private readonly double _waterLandConnectionWeight;
@@ -70,15 +70,15 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.MutationMarkov
             return sequence;
         }
         
-        private MapPixel[] MutateSequence(MapPixel[] mutationSequence, int mutationCount)
+        private static MapPixel[] MutateSequence(MapPixel[] mutationSequence, int mutationCount)
         {
-            var indecesForChanging = new List<int>(mutationCount);
+            var indexesForChanging = new List<int>(mutationCount);
 
             if (mutationCount >= mutationSequence.Length)
             {
                 for (var index = 0; index < mutationSequence.Length; index++)
                 {
-                    indecesForChanging.Add(index);
+                    indexesForChanging.Add(index);
                 }
             }
             else
@@ -89,21 +89,21 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.MutationMarkov
                     do
                     {
                         randomIndex = (int)RandomNumberSource.GetRandomNumber().Map(0, 1, 0, mutationSequence.Length);
-                    } while (indecesForChanging.Contains(randomIndex));
+                    } while (indexesForChanging.Contains(randomIndex));
 
-                    indecesForChanging.Add(randomIndex);
+                    indexesForChanging.Add(randomIndex);
                 }
             }
 
-            foreach (var index in indecesForChanging)
+            foreach (var index in indexesForChanging)
             {
-                mutationSequence[index] = GetNewRandomPixel(mutationSequence[index]);
+                mutationSequence[index] = PixelPicker.GetNewRandomPixel(mutationSequence[index]);
             }
 
             return mutationSequence;
         }
 
-        private MapPixel GetNewRandomPixel(MapPixel currentPixel)
+        private static MapPixel GetNewRandomPixel(MapPixel currentPixel)
         {
             var mapPixelValues = ((MapPixel[])Enum.GetValues(typeof(MapPixel))).ToList();
 

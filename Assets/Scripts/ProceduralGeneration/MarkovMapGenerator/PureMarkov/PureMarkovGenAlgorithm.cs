@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.ProceduralGeneration
+namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
     public enum PureMarkovGenAlgorithm
     {
-        CROSS_ROW,
-        INDEPENDENT_ROW,
-        LEFT_CORNER
+        CrossRow,
+        IndependentRow,
+        LeftCorner
     }
 }

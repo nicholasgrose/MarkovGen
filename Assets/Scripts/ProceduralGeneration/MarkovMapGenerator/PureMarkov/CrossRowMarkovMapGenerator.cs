@@ -7,7 +7,7 @@ using TMPro.EditorUtilities;
 
 namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
-    public class CrossRowMarkovMapGenerator : MapGenerator
+    public class CrossRowMarkovMapGenerator : IMapGenerator
     {
         private readonly double _landWaterConnectionWeight;
         private readonly double _waterLandConnectionWeight;

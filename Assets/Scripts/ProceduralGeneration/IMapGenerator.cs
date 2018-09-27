@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.ProceduralGeneration
 {
-    public interface MapGenerator
+    public interface IMapGenerator
     {
         MapPixel[,] GenerateMap(int mapWidth, int mapHeight);
     }

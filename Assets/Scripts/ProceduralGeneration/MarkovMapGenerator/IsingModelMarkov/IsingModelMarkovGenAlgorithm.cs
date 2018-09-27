@@ -7,6 +7,6 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
 {
     public enum IsingModelMarkovGenAlgorithm
     {
-        STANDARD_ISING_MODEL
+        StandardIsingModel
     }
 }
