@@ -105,15 +105,15 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
             var totalEnergy = 0;
             var isingValueOfGivenPoint = IsingValueOfPixel(centerValue);
 
-            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x, y + 1);
-            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x + 1, y);
-            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x, y - 1);
-            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x - 1, y);
+            totalEnergy += IsingValueOfEnergyBetweenCellsWithWrapping(map, isingValueOfGivenPoint, x, y + 1);
+            totalEnergy += IsingValueOfEnergyBetweenCellsWithWrapping(map, isingValueOfGivenPoint, x + 1, y);
+            totalEnergy += IsingValueOfEnergyBetweenCellsWithWrapping(map, isingValueOfGivenPoint, x, y - 1);
+            totalEnergy += IsingValueOfEnergyBetweenCellsWithWrapping(map, isingValueOfGivenPoint, x - 1, y);
 
             return totalEnergy;
         }
 
-        private static int IsingValueOfEnergyBetweenCells(MapPixel[,] map, int firstCellIsingValue, int x, int y)
+        private static int IsingValueOfEnergyBetweenCellsWithoutWrapping(MapPixel[,] map, int firstCellIsingValue, int x, int y)
         {
             if (CoordinateIsInBounds(map, x, y))
             {
@@ -122,6 +122,40 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
             else
             {
                 return 0;
+            }
+        }
+
+        private static int IsingValueOfEnergyBetweenCellsWithWrapping(MapPixel[,] map, int firstCellIsingValue, int x, int y)
+        {
+            if (CoordinateIsInBounds(map, x, y))
+            {
+                return firstCellIsingValue * IsingValueOfPixel(map[x, y]);
+            }
+            else
+            {
+                var xTooLow = x < 0;
+                var xTooHigh = x >= map.GetLength(0);
+                if (xTooLow)
+                {
+                    x = map.GetLength(0) - 1;
+                }
+                else if (xTooHigh)
+                {
+                    x = 0;
+                }
+
+                var yTooLow = y < 0;
+                var yTooHigh = y >= map.GetLength(0);
+                if (yTooLow)
+                {
+                    y = map.GetLength(0) - 1;
+                }
+                else if (yTooHigh)
+                {
+                    y = 0;
+                }
+                
+                return firstCellIsingValue * IsingValueOfPixel(map[x, y]);
             }
         }
 
