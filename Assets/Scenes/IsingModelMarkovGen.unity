@@ -383,9 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0eb80c394a64804faa758569a0a6f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureWidth: 64
-  TextureHeight: 64
+  TextureWidth: 128
+  TextureHeight: 128
   GenerationAlgorithm: 0
   DisplaySurface: {fileID: 714883513}
-  Iterations: 50000
+  Iterations: 300000
   Temperature: 5
