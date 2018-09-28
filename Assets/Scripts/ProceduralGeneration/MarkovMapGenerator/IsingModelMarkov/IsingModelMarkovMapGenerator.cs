@@ -20,7 +20,6 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
         public MapPixel[,] GenerateMap(int mapWidth, int mapHeight)
         {
             var map = new MapPixel[mapWidth, mapHeight];
-
             map = FillMapWithWhiteNoise(map);
 
             for (var iteration = 0; iteration < _iterations; iteration++)
@@ -71,9 +70,9 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
             var changedEnergyMapProbability = Math.Exp(_temperature * energyIfChanged);
 
             var ratioOfChangedAndCurrentProbabilities = changedEnergyMapProbability / currentEnergyMapProbability;
-            var mapModificiationProbability = Math.Min(ratioOfChangedAndCurrentProbabilities, 1);
+            var mapModificationProbability = Math.Min(ratioOfChangedAndCurrentProbabilities, 1);
 
-            return randomNumber < mapModificiationProbability;
+            return randomNumber < mapModificationProbability;
         }
 
         private static int EnergyAtPoint(MapPixel[,] map, int x, int y)
@@ -106,24 +105,24 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
             var totalEnergy = 0;
             var isingValueOfGivenPoint = IsingValueOfPixel(centerValue);
 
-            if (CoordinateIsInBounds(map, x, y + 1))
-            {
-                totalEnergy += isingValueOfGivenPoint * IsingValueOfPixel(map[x, y + 1]);
-            }
-            if (CoordinateIsInBounds(map, x + 1, y))
-            {
-                totalEnergy += isingValueOfGivenPoint * IsingValueOfPixel(map[x + 1, y]);
-            }
-            if (CoordinateIsInBounds(map, x, y - 1))
-            {
-                totalEnergy += isingValueOfGivenPoint * IsingValueOfPixel(map[x, y - 1]);
-            }
-            if (CoordinateIsInBounds(map, x - 1, y))
-            {
-                totalEnergy += isingValueOfGivenPoint * IsingValueOfPixel(map[x - 1, y]);
-            }
+            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x, y + 1);
+            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x + 1, y);
+            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x, y - 1);
+            totalEnergy += IsingValueOfEnergyBetweenCells(map, isingValueOfGivenPoint, x - 1, y);
 
             return totalEnergy;
+        }
+
+        private static int IsingValueOfEnergyBetweenCells(MapPixel[,] map, int firstCellIsingValue, int x, int y)
+        {
+            if (CoordinateIsInBounds(map, x, y))
+            {
+                return firstCellIsingValue * IsingValueOfPixel(map[x, y]);
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private static int IsingValueOfPixel(MapPixel mapPixel)
