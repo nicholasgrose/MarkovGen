@@ -45,6 +45,7 @@ namespace Assets.Scripts
         {
             var surfaceRenderer = DisplaySurface.GetComponent<MeshRenderer>();
             var newTexture = new Texture2D(TextureWidth, TextureHeight);
+            newTexture.filterMode = FilterMode.Point;
 
             for (var x = 0; x < TextureWidth; x++)
             {

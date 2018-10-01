@@ -148,7 +148,7 @@ namespace Assets.Scripts.ProceduralGeneration.MarkovMapGenerator.IsingModelMarko
                 var yTooHigh = y >= map.GetLength(0);
                 if (yTooLow)
                 {
-                    y = map.GetLength(0) - 1;
+                    y = map.GetLength(1) - 1;
                 }
                 else if (yTooHigh)
                 {
