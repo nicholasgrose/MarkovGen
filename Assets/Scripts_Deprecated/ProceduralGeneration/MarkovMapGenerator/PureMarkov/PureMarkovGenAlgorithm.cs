@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralGeneration.MarkovMapGenerator.PureMarkov
+﻿namespace Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
     public enum PureMarkovGenAlgorithm
     {

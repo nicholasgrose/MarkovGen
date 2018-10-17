@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.MarkovChain;
-using Assets.MiscUtils;
+using Assets.Scripts_Deprecated.MarkovChain;
+using Assets.Scripts_Deprecated.MiscUtils;
 
-namespace Assets.ProceduralGeneration.MarkovMapGenerator.MutationMarkov
+namespace Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.MutationMarkov
 {
     public class MutationMarkovMapGenerator : IMapGenerator
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.MiscUtils
+namespace Assets.Scripts_Deprecated.MiscUtils
 {
     internal static class RandomNumberSource
     {

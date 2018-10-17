@@ -9,14 +9,27 @@ namespace Assets.Scripts.Display.MapDisplay
 {
     public class DisplaysIsingModelMarkov : DisplaysMapScript
     {
+        public IsingAlgorithm GenerationAlgorithm;
+
         protected override IMapGenerator CreateMapGenerator()
         {
-            throw new NotImplementedException();
+            switch (GenerationAlgorithm)
+            {
+                case IsingAlgorithm.Standard:
+                    return new IsingModelMarkovMapGenerator();
+                default:
+                    return null;
+            }
         }
 
         protected override IMapToTextureTranslator CreateMapToTextureTranslator()
         {
-            throw new NotImplementedException();
+            return new BinaryMapToTextureTranslator();
         }
+    }
+
+    public enum IsingAlgorithm
+    {
+        Standard
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.MarkovChain;
+using Assets.Scripts_Deprecated.MarkovChain;
 
-namespace Assets.ProceduralGeneration.MarkovMapGenerator.PureMarkov
+namespace Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
     public class CrossRowMarkovMapGenerator : IMapGenerator
     {

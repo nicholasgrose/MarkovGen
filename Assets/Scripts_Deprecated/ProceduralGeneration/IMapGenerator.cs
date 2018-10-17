@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralGeneration
+﻿namespace Assets.Scripts_Deprecated.ProceduralGeneration
 {
     public interface IMapGenerator
     {

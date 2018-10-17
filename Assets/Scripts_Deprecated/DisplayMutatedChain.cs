@@ -1,11 +1,10 @@
-﻿using Assets.ProceduralGeneration;
-using Assets.ProceduralGeneration.MarkovMapGenerator.PureMarkov;
+﻿using Assets.Scripts_Deprecated.ProceduralGeneration;
+using Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.MutationMarkov;
 using UnityEngine;
-using PureMarkovGenAlgorithm = Assets.ProceduralGeneration.MarkovMapGenerator.PureMarkov.PureMarkovGenAlgorithm;
 
-namespace Assets
+namespace Assets.Scripts_Deprecated
 {
-    public class DisplaysChain : MonoBehaviour
+    public class DisplayMutatedChain : MonoBehaviour
     {
         [Tooltip("The resolution of the texture on the x-axis")]
         public int TextureWidth;
@@ -17,8 +16,14 @@ namespace Assets
         [Range(0, 1)]
         [Tooltip("The chance that a water pixel will turn into a land pixel in the chain")]
         public double WaterToLandWeight;
+        [Range(0, 1024)]
+        [Tooltip("The minimum number of mutations that can occur")]
+        public int MinimumMutations;
+        [Range(0, 1024)]
+        [Tooltip("The maximum number of mutations that can occur")]
+        public int MaximumMutations;
         [Tooltip("Selects the specific algorithm being used to generate the map")]
-        public PureMarkovGenAlgorithm GenerationAlgorithm;
+        public MutationMarkovGenAlgorithm GenerationAlgorithm;
         [Tooltip("The object the generated texture is displayed on")]
         public GameObject DisplaySurface;
 
@@ -36,12 +41,8 @@ namespace Assets
         {
             switch (GenerationAlgorithm)
             {
-                case PureMarkovGenAlgorithm.CrossRow:
-                    return new CrossRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case PureMarkovGenAlgorithm.IndependentRow:
-                    return new IndependentRowMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
-                case PureMarkovGenAlgorithm.LeftCorner:
-                    return new LeftCornerMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight);
+                case MutationMarkovGenAlgorithm.StandardMutation:
+                    return new MutationMarkovMapGenerator(LandToWaterWeight, WaterToLandWeight, MinimumMutations, MaximumMutations);
                 default:
                     return null;
             }

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.MarkovChain;
+using Assets.Scripts_Deprecated.MarkovChain;
 
-namespace Assets.ProceduralGeneration.MarkovMapGenerator.PureMarkov
+namespace Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.PureMarkov
 {
-    public class LeftCornerMarkovMapGenerator : IMapGenerator
+    public class IndependentRowMarkovMapGenerator : IMapGenerator
     {
         private readonly double _landWaterConnectionWeight;
         private readonly double _waterLandConnectionWeight;
 
-        public LeftCornerMarkovMapGenerator(double landWaterConnectionWeight, double waterLandConnectionWeight)
+        public IndependentRowMarkovMapGenerator(double landWaterConnectionWeight, double waterLandConnectionWeight)
         {
             _landWaterConnectionWeight = landWaterConnectionWeight;
             _waterLandConnectionWeight = waterLandConnectionWeight;
@@ -25,47 +24,13 @@ namespace Assets.ProceduralGeneration.MarkovMapGenerator.PureMarkov
             {
                 var columnChain = GetMarkovChain(markovChain.NextValue());
 
-                if (x == 0)
+                for (var y = 0; y < mapHeight; y++)
                 {
-                    for (var y = 0; y < mapHeight; y++)
-                    {
-                        map[x, y] = columnChain.NextValue();
-                    }
-                }
-                else
-                {
-                    for (var y = 0; y < mapHeight; y++)
-                    {
-                        if (y == 0)
-                        {
-                            map[x, y] = columnChain.NextValue();
-                        }
-                        else
-                        {
-                            map[x, y] = columnChain.NextValue(ModeToTopLeftOfPoint(x, y, map));
-                        }
-                    }
+                    map[x, y] = columnChain.NextValue();
                 }
             }
 
             return map;
-        }
-
-        private static MapPixel ModeToTopLeftOfPoint(int x, int y, MapPixel[,] map)
-        {
-            var mapPixelValues = ((MapPixel[]) Enum.GetValues(typeof(MapPixel))).ToList();
-            var pixelCount = new List<int>();
-
-            foreach (var pixel in mapPixelValues)
-            {
-                pixelCount.Add(0);
-            }
-
-            pixelCount[mapPixelValues.IndexOf(map[x - 1, y])] += 1;
-            pixelCount[mapPixelValues.IndexOf(map[x - 1, y - 1])] += 1;
-            pixelCount[mapPixelValues.IndexOf(map[x, y - 1])] += 1;
-
-            return mapPixelValues[pixelCount.IndexOf(pixelCount.Max())];
         }
 
         private MarkovChain<MapPixel> GetMarkovChain()

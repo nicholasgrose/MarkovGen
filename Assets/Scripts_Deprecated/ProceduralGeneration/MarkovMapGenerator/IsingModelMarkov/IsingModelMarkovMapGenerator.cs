@@ -1,7 +1,7 @@
 ﻿using System;
-using Assets.MiscUtils;
+using Assets.Scripts_Deprecated.MiscUtils;
 
-namespace Assets.ProceduralGeneration.MarkovMapGenerator.IsingModelMarkov
+namespace Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.IsingModelMarkov
 {
     public class IsingModelMarkovMapGenerator : IMapGenerator
     {

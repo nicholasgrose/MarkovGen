@@ -9,14 +9,33 @@ namespace Assets.Scripts.Display.MapDisplay
 {
     public class DisplaysRandomWalkerMarkov : DisplaysMapScript
     {
+        public RandomWalkerAlgorithm GenerationMethod;
+
         protected override IMapGenerator CreateMapGenerator()
         {
-            throw new NotImplementedException();
+            switch (GenerationMethod)
+            {
+                case RandomWalkerAlgorithm.CrossRow:
+                    return new CrossRowRandomWalkerMarkovMapGenerator();
+                case RandomWalkerAlgorithm.Independent:
+                    return new IndependentRandomWalkerMarkovMapGenerator();
+                case RandomWalkerAlgorithm.LeftCorner:
+                    return new LeftCornerRandomWalkerMarkovMapGenerator();
+                default:
+                    return null;
+            }
         }
 
         protected override IMapToTextureTranslator CreateMapToTextureTranslator()
         {
-            throw new NotImplementedException();
+            return new BinaryMapToTextureTranslator();
         }
+    }
+
+    public enum RandomWalkerAlgorithm
+    {
+        CrossRow,
+        Independent,
+        LeftCorner
     }
 }

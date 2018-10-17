@@ -9,14 +9,27 @@ namespace Assets.Scripts.Display.MapDisplay
 {
     public class DisplaysMutationMarkov : DisplaysMapScript
     {
+        public MutationAlgorithm GenerationAlgorithm;
+
         protected override IMapGenerator CreateMapGenerator()
         {
-            throw new NotImplementedException();
+            switch (GenerationAlgorithm)
+            {
+                case MutationAlgorithm.Basic:
+                    return new MutationMarkovMapGenerator();
+                default:
+                    return null;
+            }
         }
 
         protected override IMapToTextureTranslator CreateMapToTextureTranslator()
         {
-            throw new NotImplementedException();
+            return new BinaryMapToTextureTranslator();
         }
+    }
+
+    public enum MutationAlgorithm
+    {
+        Basic
     }
 }

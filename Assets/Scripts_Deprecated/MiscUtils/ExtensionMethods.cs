@@ -1,4 +1,4 @@
-﻿namespace Assets.MiscUtils
+﻿namespace Assets.Scripts_Deprecated.MiscUtils
 {
     public static class ExtensionMethods
     {

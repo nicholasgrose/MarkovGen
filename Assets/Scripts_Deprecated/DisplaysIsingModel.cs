@@ -1,8 +1,8 @@
-﻿using Assets.ProceduralGeneration;
-using Assets.ProceduralGeneration.MarkovMapGenerator.IsingModelMarkov;
+﻿using Assets.Scripts_Deprecated.ProceduralGeneration;
+using Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.IsingModelMarkov;
 using UnityEngine;
 
-namespace Assets
+namespace Assets.Scripts_Deprecated
 {
     public class DisplaysIsingModel : MonoBehaviour
     {

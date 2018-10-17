@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Assets.ProceduralGeneration;
+using Assets.Scripts_Deprecated.ProceduralGeneration;
 
-namespace Assets.MiscUtils
+namespace Assets.Scripts_Deprecated.MiscUtils
 {
     public static class PixelPicker
     {

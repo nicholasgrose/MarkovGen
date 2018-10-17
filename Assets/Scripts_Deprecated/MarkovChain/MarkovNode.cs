@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.MiscUtils;
+using Assets.Scripts_Deprecated.MiscUtils;
 
-namespace Assets.MarkovChain
+namespace Assets.Scripts_Deprecated.MarkovChain
 {
     // TODO: Find way to convert to data class. Actual functionality should be offloaded elsewhere.
     public class MarkovNode<TNodeType>

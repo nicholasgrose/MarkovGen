@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.ProceduralGeneration;
+using Assets.Scripts_Deprecated.ProceduralGeneration;
 
 namespace Assets.Scripts.Generation.MarkovChain
 {

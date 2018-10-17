@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.MiscUtils;
+using Assets.Scripts_Deprecated.MiscUtils;
 
-namespace Assets.MarkovChain
+namespace Assets.Scripts_Deprecated.MarkovChain
 {
     public class MarkovChain<TNodeType>
     {
