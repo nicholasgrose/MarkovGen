@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Scripts.Display.MapToTexture;
 using Assets.Scripts.Generation.MapGeneration;
 using Assets.Scripts.Shared;
+using Assets.Scripts.Shared.Map;
 using UnityEngine;
 
 namespace Assets.Scripts.Display.MapDisplay
@@ -35,11 +36,11 @@ namespace Assets.Scripts.Display.MapDisplay
             DisplayMap(map);
         }
 
-        private void DisplayMap(IMap map)
+        private void DisplayMap(ITwoDimensionalMap twoDimensionalMap)
         {
             var mapToTextureTranslator = CreateMapToTextureTranslator();
             DisplaySurface.GetComponent<MeshRenderer>().material.mainTexture =
-                mapToTextureTranslator.TranslateMapToTexture(map);
+                mapToTextureTranslator.TranslateMapToTexture(twoDimensionalMap);
         }
 
         protected abstract IMapGenerator CreateMapGenerator();
