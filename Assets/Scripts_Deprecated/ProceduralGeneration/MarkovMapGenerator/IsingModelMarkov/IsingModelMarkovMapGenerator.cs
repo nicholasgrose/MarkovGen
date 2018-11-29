@@ -118,7 +118,7 @@ namespace Assets.Scripts_Deprecated.ProceduralGeneration.MarkovMapGenerator.Isin
             }
             else
             {
-                return 0;
+                return -1;
             }
         }
 

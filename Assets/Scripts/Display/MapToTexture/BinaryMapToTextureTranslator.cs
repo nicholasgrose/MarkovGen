@@ -7,7 +7,7 @@ namespace Assets.Scripts.Display.MapToTexture
 {
     public class BinaryMapToTextureTranslator : IMapToTextureTranslator
     {
-        public Texture2D TranslateMapToTexture(ITwoDimensionalMap twoDimensionalMap)
+        public Texture2D TranslateMapToTexture(ITwoDimensionalMap map)
         {
             throw new NotImplementedException();
         }

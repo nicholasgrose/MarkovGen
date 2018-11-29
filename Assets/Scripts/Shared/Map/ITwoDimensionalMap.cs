@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Shared.Coordinate;
+using UnityEngine;
 
 namespace Assets.Scripts.Shared.Map
 {
@@ -8,10 +10,11 @@ namespace Assets.Scripts.Shared.Map
         int Height();
     }
 
-    public interface ITwoDimensionalMap : ITwoDimensional
+    public interface IMap : ITwoDimensional
     {
-        void SetPixelAt(Vector2Int coordinate, MapPixel value);
-        MapPixel GetPixelAt(Vector2Int coordinate);
-        MapPixel[] GetAdjacentPixels(Vector2Int coordinate);
+        MapPixel[,] GetArrayRepresentation();
+        MapPixel GetPixelAt(IThreeDimensionalCoordinate coordinate);
+        void SetPixelAt(IThreeDimensionalCoordinate coordinate, MapPixel value);
+        ICollection<MapPixel> GetAdjacentPixels(IThreeDimensionalCoordinate coordinate);
     }
 }
