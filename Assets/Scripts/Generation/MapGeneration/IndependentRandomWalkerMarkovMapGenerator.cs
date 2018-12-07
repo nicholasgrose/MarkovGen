@@ -6,7 +6,7 @@ namespace Assets.Scripts.Generation.MapGeneration
 {
     public class IndependentRandomWalkerMarkovMapGenerator : IMapGenerator
     {
-        public ITwoDimensionalMap GenerateMap(int height, int width)
+        public IMap GenerateMap(int height, int width)
         {
             throw new NotImplementedException();
         }

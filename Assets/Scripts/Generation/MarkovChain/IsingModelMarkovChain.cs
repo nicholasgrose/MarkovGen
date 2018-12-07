@@ -7,9 +7,9 @@ using Assets.Scripts.Shared.Map;
 
 namespace Assets.Scripts.Generation.MarkovChain
 {
-    public class IsingModelMarkovChain : IMarkovChain<ITwoDimensionalMap>
+    public class IsingModelMarkovChain : IMarkovChain<IMap>
     {
-        public ITwoDimensionalMap NextValue()
+        public IMap NextValue()
         {
             throw new NotImplementedException();
         }

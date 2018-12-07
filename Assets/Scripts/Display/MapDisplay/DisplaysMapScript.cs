@@ -36,7 +36,7 @@ namespace Assets.Scripts.Display.MapDisplay
             DisplayMap(map);
         }
 
-        private void DisplayMap(ITwoDimensionalMap map)
+        private void DisplayMap(IMap map)
         {
             var mapToTextureTranslator = CreateMapToTextureTranslator();
             DisplaySurface.GetComponent<MeshRenderer>().material.mainTexture =

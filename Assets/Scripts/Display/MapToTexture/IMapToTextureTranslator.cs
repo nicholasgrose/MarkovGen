@@ -6,6 +6,6 @@ namespace Assets.Scripts.Display.MapToTexture
 {
     public interface IMapToTextureTranslator
     {
-        Texture2D TranslateMapToTexture(ITwoDimensionalMap map);
+        Texture2D TranslateMapToTexture(IMap map);
     }
 }
