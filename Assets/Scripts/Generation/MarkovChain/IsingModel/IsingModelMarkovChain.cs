@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Assets.Scripts.Shared;
 using Assets.Scripts.Shared.Map;
 
-namespace Assets.Scripts.Generation.MarkovChain
+namespace Assets.Scripts.Generation.MarkovChain.IsingModel
 {
     public class IsingModelMarkovChain : IMarkovChain<IMap>
     {
         public IMap NextValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Restart()
         {
             throw new NotImplementedException();
         }

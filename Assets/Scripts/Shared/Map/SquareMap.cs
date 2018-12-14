@@ -9,7 +9,7 @@ namespace Assets.Scripts.Shared.Map
 {
     public class SquareMap : IMap
     {
-        private MapPixel[,] _map;
+        private readonly MapPixel[,] _map;
 
         public SquareMap(int width, int height)
         {

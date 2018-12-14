@@ -8,5 +8,6 @@ namespace Assets.Scripts.Generation.MarkovChain
     public interface IMarkovChain<out T>
     {
         T NextValue();
+        void Restart();
     }
 }
