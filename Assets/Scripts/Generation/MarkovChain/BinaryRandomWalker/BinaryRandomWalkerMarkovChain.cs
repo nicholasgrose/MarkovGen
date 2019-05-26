@@ -36,6 +36,11 @@ namespace Assets.Scripts.Generation.MarkovChain.BinaryRandomWalker
             return _currentValue;
         }
 
+        public void Restart()
+        {
+            throw new NotImplementedException();
+        }
+
         public void RestartChain()
         {
             _currentValue = Config.StartValue;
